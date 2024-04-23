@@ -13,7 +13,11 @@ class Product extends Model
         'name',
         'description',
         'image',
-        'stock'
+        'stock',
+        'initial_price',
+        'selling_price',
+        'category',
+        'barcode',
     ];
 
     public function logs()
