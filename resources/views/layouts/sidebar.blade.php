@@ -11,6 +11,20 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-plus-circle"></i>
+          <span>Add Product</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.html">
+          <i class="bi bi-plus-circle"></i>
+          <span>Log</span>
+        </a>
+      </li>
+
+      {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -231,6 +245,6 @@
         </a>
       </li><!-- End Blank Page Nav -->
 
-    </ul>
+    </ul> --}}
 
   </aside><!-- End Sidebar-->
