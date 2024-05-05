@@ -16,7 +16,7 @@
 <section class="section">
   <div class="row">
   <div class="col-lg-4" >
-    <a href="{{ route('tambah') }}" class="card-link">
+    <a href="{{url('/create')}}" class="card-link">
         <div class="alert alert-success alert-dismissible fade show">
             <div class="card-body">
                 <h5 class="card-title">Tambah Barang</h5>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="col-lg-4 " >
-    <a href="{{ route('tabel') }}" class="card-link">
+    <a href="{{url('/tabel')}}" class="card-link">
         <div class="alert alert-warning alert-dismissible fade show">
             <div class="card-body">
                 <h5 class="card-title">Ubah Tampilan Dalam Bentuk Tabel</h5>

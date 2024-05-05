@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,10 +11,7 @@ Route::get('/Inventaris', function () {
     return view('inventaris.index');
 })->name('index');
 
-Route::get('/tabel', function () {
-    return view('inventaris.tabel.index');
-})->name('tabel');
-
-Route::get('/tambah', function () {
-    return view('inventaris.tambah');
-})->name('tambah');
+Route::get('/tabel', [ProductController::class, 'index']);
+Route::get('/create', [ProductController::class, 'create']);
+Route::post('/store', [ProductController::class, 'store']);
+Route::get('/destroy/{id}', [ProductController::class, 'destroy']);

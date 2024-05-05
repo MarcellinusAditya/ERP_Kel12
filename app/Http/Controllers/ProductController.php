@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use  App\Models\Product;
+use Illuminate\Support\Facades\DB;
+
+
+class ProductController extends Controller
+{
+        public function index() //menampilkan data
+    {
+        $product = DB::table('product')->get();
+
+        // Kemudian Anda dapat mengirimkan data ke tampilan untuk ditampilkan
+        return view('inventaris.tabel.index', compact('product'));
+    }
+
+    public function create()
+    {
+        $product = DB::table('product')->get();
+
+        return view('inventaris.tabel.tambah', compact('product'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required |max:45',
+            'initial_price' => 'required|integer|max:99999999', // sesuaikan dengan rentang nilai yang diizinkan
+            'selling_price' => 'required|integer|max:99999999', // sesuaikan dengan rentang nilai yang diizinkan
+            'stock' => 'required|integer',
+            'stock' => 'required|integer',
+        ],
+        [
+            'name.required' => 'Nama barang wajib diisi.',
+            'initial_price.required' => 'Harga harus diisi.',
+            'initial_price.integer' => 'Harga harus berupa bilangan bulat.',
+            'initial_price.max' => 'Harga terlalu besar.',
+            'selling_price.required' => 'Harga jual harus diisi.',
+            'selling_price.integer' => 'Harga jual harus berupa bilangan bulat.',
+            'selling_price.max' => 'Harga jual terlalu besar.',
+            'stock.required' => 'Stock harus diisi.',
+            'stock.integer' => 'Stock harus berupa bilangan bulat.',
+        ]);
+
+         //proses upload foto
+         if(!empty($request->image)){
+            $fileName = 'image-' . uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('foto/img'), $fileName);
+        } else{
+            $fileName = '';
+        }
+
+        DB::table('product')->insert([
+            'name' => $request->name,
+            'initial_price' => $request->initial_price,
+            'selling_price' => $request->selling_price,
+            'image' => $fileName,
+            'stock' => $request->stock,
+            'category' => $request->category,
+            'barcode' => $request->barcode,
+            'description' => $request->description,
+        ]);
+        
+        return redirect('/tabel');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('product')->where('id', $id)->delete();
+        return redirect('/tabel');
+    }
+}

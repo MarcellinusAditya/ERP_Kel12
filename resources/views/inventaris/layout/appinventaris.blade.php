@@ -32,6 +32,7 @@
 <link href="{{ asset('fontawesome/css/v5-font-face.css') }}" rel="stylesheet" />
 
 
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -81,6 +82,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+
 
 </body>
 
