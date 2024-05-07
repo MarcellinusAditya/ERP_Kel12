@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class Product extends Model
 {
     use HasFactory;
 
+    protected $table='product';
     protected $fillable = [
         'name',
         'description',
@@ -20,9 +21,9 @@ class Product extends Model
         'barcode',
     ];
 
-    public function logs()
+    public function Logs():HasMany
     {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class, "product_id");
     }
 
 }

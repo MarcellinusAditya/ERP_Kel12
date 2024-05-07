@@ -49,36 +49,38 @@
     <!-- Left side columns -->
     <div class="col-lg-12">
       <div class="row">
-        @for ($i = 0; $i < 10; $i++)
+        @foreach ($product as $p)
+          
+        
         <!-- Card Barang -->
         <div class="col-xl-3 col-md-6">
           <div class="card info-card sales-card">
             <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <a class="icon " href="#" role="button type="button" class="btn btn-danger"" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <li class="dropdown-header text-start">
                   <h6>Opsi</h6>
                 </li>
-                <li><a class="dropdown-item" href="#">Edit</a></li>
+                <li><a class="dropdown-item" href="#">Edit Stock</a></li>
                 <li><a class="dropdown-item" href="#">Hapus</a></li>
               </ul>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Pizza</h5>
+              <h5 class="card-title">{{$p->name}}</h5>
               <div class="d-flex align-items-center">
                 <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/640px-Eq_it-na_pizza-margherita_sep2005_sml.jpg" alt="" width="100" height="100" style="border: 1px  black; border-radius: 50px; padding: 15px;">
+                  <img src="{{url('foto/img')}}/{{$p->image}}" alt="" width="100" height="100" style="border: 1px  black; border-radius: 50px; padding: 15px;">
                 </div>
                 <div class="ps-3">
-                  <h6>5</h6>
-                  <span class="text-success small pt-1 fw-bold">Masuk : 12/06/2023</span> <br>
-                  <span class="text-danger small pt-1 fw-bold">Keluar : 18/06/2023</span>
+                  <h6>{{$p->stock}}</h6>
+                  <a href="{{ route('logs.create', [$p->id, 'status'=>'Out'])}}"><button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button ></a>
+                  <a href="{{ route('logs.create', [$p->id,'status'=>'In'])}}"><button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button></a>
                 </div>
               </div>
             </div>
           </div>
         </div><!-- End Card Barang -->
-        @endfor
+        @endforeach
       </div><!-- End inner row -->
     </div><!-- End Left side columns -->
   </div><!-- End row -->
