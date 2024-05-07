@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products');
+            $table->foreignId('product_id')->constrained('product');
             $table->enum('status', ['In', 'Out']);
             $table->integer('stock');
             $table->string('nota');
