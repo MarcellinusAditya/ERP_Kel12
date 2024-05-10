@@ -63,7 +63,8 @@
   @yield('content')
 
   </main><!-- End #main -->
-
+  <br>
+  <br>
   <!-- ======= Footer ======= -->
   @include('inventaris.layout.footer')
   <!-- End Footer -->
@@ -88,5 +89,6 @@
 
 
 </body>
+@include('sweetalert::alert')
 
 </html>

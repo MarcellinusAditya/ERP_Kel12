@@ -1,22 +1,40 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogsController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
-    return redirect('/Inventaris');
+    return view('auth.login');
 });
 
-Route::get('/Inventaris', [ProductController::class, 'indexHome'])->name('index');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/tabel', [ProductController::class, 'index']);
-Route::get('/create', [ProductController::class, 'create']);
-Route::post('/store', [ProductController::class, 'store']);
-Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
-Route::put('/update/{id}', [ProductController::class, 'update'])->name('product.update');
-Route::get('/destroy/{id}', [ProductController::class, 'destroy']);
+Route::get('/dashboard', [ProductController::class, 'indexHome'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
-Route::get('/logs', [LogsController::class, 'index'])->name('logs.index');
-Route::get('/logs/create/{id}/{status}', [LogsController::class, 'create'])->name('logs.create');
-Route::post('/logs/create/{id}', [LogsController::class, 'store'])->name('logs.store');
+Route::middleware('auth')->group(function () {
+    Route::get('/Inventaris', [ProductController::class, 'indexHome'])->name('index');
+    Route::get('/tabel', [ProductController::class, 'index']);
+    Route::get('/create', [ProductController::class, 'create']);
+    Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/update/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::get('/destroy/{id}', [ProductController::class, 'destroy']);
+
+    Route::get('/logs', [LogsController::class, 'index'])->name('logs.index');
+    Route::get('/logs/create/{id}/{status}', [LogsController::class, 'create'])->name('logs.create');
+    Route::post('/logs/create/{id}', [LogsController::class, 'store'])->name('logs.store');
+
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/myprofile', [UserController::class, 'myprofile'])->name('myprofile');
+    Route::patch('/user/myprofile/{id}', [UserController::class, 'update']);
+    Route::patch('/user/myprofile/password/{id}', [UserController::class, 'updatepassword']);
+});
+
+require __DIR__.'/auth.php';
