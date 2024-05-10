@@ -2,7 +2,7 @@ cara menggunakan file ini. ketik di terminal
 1. buat folder kosong lalu masuk kedalam terminal 
 2. ketik : git init
 3. ketik : git remote add origin https://github.com/MarcellinusAditya/ERP_Kel12.git
-4. ketik : git pull origin vieri
+4. ketik : git pull origin vieri2
 4. ketik : composer install
 5. copy file env yang ada di branch github "vieri" lalu paste ke file env yang kalian buat
 6. ketik : php artisan migrate
