@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use  App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class ProductController extends Controller
@@ -71,7 +73,7 @@ class ProductController extends Controller
             'description' => $request->description,
         ]);
         
-        return redirect('/tabel');
+        return redirect('/tabel')->with('status', 'Produk Telah Di Tambah!');
     }
 
     public function edit($id){

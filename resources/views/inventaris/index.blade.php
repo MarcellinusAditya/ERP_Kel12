@@ -61,9 +61,30 @@
                 <li class="dropdown-header text-start">
                   <h6>Opsi</h6>
                 </li>
-                <li><a class="dropdown-item" href="#">Edit Stock</a></li>
-                <li><a class="dropdown-item" href="#">Hapus</a></li>
+                <li><a class="dropdown-item" href="{{ route('product.edit', $p->id)}}">Edit</a></li>
+                <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#disablebackdrop_{{ $p->id }}">
+                  Hapus
+              </button>
               </ul>
+              <!-- modal hapus -->
+              <div class="modal fade" id="disablebackdrop_{{ $p->id }}" tabindex="-1" data-bs-backdrop="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Hapus</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Anda yakin menghapus barang ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a href="{{ url('/destroy/'.$p->id) }}"><button type="button" class="btn btn-danger">Hapus</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End Disabled Backdrop Modal-->
+
             </div>
             <div class="card-body">
               <h5 class="card-title">{{$p->name}}</h5>
