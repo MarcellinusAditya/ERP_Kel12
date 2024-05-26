@@ -31,11 +31,14 @@
                 <thead>
                   <tr>
                     <th>No</th>
+                    <th>Admin</th>
                     <th>Nama Barang</th>
                     <th>Status</th>
                     <th>Jumlah</th>
+                    <th>Jumlah Akhir</th>
                     <th data-type="date" data-format="DD/MM/YYYY">Tanggal Input</th>
                     <th>Nota</th>
+                    <th>Keterangan</th>
 
                   </tr>
                 </thead>
@@ -43,6 +46,7 @@
                 @foreach ($logs as $log)
                   <tr>
                     <td>{{$log->id}}</td>
+                    <td>{{$log->user->name ?? ''}}</td>
                     <td>{{$log->product->name}}</td>
                     @if ($log->status=='In')
                     <td class="text-success">Tambah</td>
@@ -52,8 +56,10 @@
                     @endif
                    
                     <td>{{$log->stock}}</td>
+                    <td>{{$log->final_stock}}</td>
                     <td>{{$log->created_at}}</td>
                     <td>{{$log->nota}}</td>
+                    <td>{{$log->description}}</td>
 
                     
                     

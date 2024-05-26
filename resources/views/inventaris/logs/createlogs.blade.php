@@ -75,6 +75,16 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="col-12">
+              <label for="description" class="form-label">Keterangan</label>
+              <textarea  class="form-control" style="height: 100px" id="description" placeholder="Keterangan" name="description"></textarea>
+              @error('description')
+              <div class="invalid-feedback">
+                {{$message}}
+              </div>
+              @enderror
+          </div>
             
             
 
