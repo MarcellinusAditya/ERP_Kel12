@@ -30,6 +30,16 @@
                 @enderror
             </div>
 
+            <div class="col-md-12">
+              <label for="stock_saat_ini" class="form-label">Stock saat ini</label>
+              <input type="text" class="form-control" id="stock_saat_ini" name="name" value="{{$product->stock}}" disabled>
+              @error('name')
+              <div class="invalid-feedback">
+                {{$message}}
+              </div>
+              @enderror
+          </div>
+
             <div class="col-md-8">
                 <label for="status_stock" class="form-label">Status</label>
                 <div class="btn-group form-control" role="group" id="status_stock" aria-label="Basic radio toggle button group">
@@ -78,7 +88,7 @@
 
             <div class="col-12">
               <label for="description" class="form-label">Keterangan</label>
-              <textarea  class="form-control" style="height: 100px" id="description" placeholder="Keterangan" name="description"></textarea>
+              <textarea  class="form-control" style="height: 100px" id="description" placeholder="Cth: Penambahan stock karena stock menipis" name="description"></textarea>
               @error('description')
               <div class="invalid-feedback">
                 {{$message}}

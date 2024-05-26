@@ -93,7 +93,7 @@
                   <img src="{{url('foto/img')}}/{{$p->image}}" alt="" width="100" height="100" style="border: 1px  black; border-radius: 50px; padding: 15px;">
                 </div>
                 <div class="ps-3">
-                  <h6>{{$p->stock}}</h6>
+                  <h6>Stock: {{$p->stock}}</h6>
                   <a href="{{ route('logs.create', [$p->id, 'status'=>'Out'])}}"><button type="button" class="btn btn-danger"><i class="fas fa-minus"></i></button ></a>
                   <a href="{{ route('logs.create', [$p->id,'status'=>'In'])}}"><button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button></a>
                 </div>
