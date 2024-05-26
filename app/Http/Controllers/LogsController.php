@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use  App\Models\Product;
 use  App\Models\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class LogsController extends Controller
 {
     public function index() //menampilkan data
@@ -29,24 +30,16 @@ class LogsController extends Controller
     {
         $request->validate([
             'stock' => 'required|integer',
+            'nota' => 'required|max:999',
+            'description' => 'required|max:999',
         ],
         [
             'stock.required' => 'Stock harus diisi.',
             'stock.integer' => 'Stock harus berupa bilangan bulat.',
         ]);
 
-    
-   
-        DB::table('logs')->insert([
-            'product_id' => $id,
-            'status' => $request->status,
-            'stock' => $request->stock,
-            'nota' => $request->nota,
-            'created_at' => now(),
-        ]);
-
         $product= Product::find($id);
-        
+        // dd($request);
 
         if($request->status == 'Out'){
             $finalStock=$product->stock - $request->stock;
@@ -54,6 +47,19 @@ class LogsController extends Controller
         elseif($request->status == 'In'){
             $finalStock=$product->stock + $request->stock;
         }
+   
+        DB::table('logs')->insert([
+            'user_id' => Auth::user()->id,
+            'product_id' => $id,
+            'status' => $request->status,
+            'stock' => $request->stock,
+            'nota' => $request->nota,
+            'description' => $request->description,
+            'final_stock' => $finalStock,
+            'created_at' => now(),
+        ]);
+
+        
 
         $product->stock=$finalStock;
         $product->update();
