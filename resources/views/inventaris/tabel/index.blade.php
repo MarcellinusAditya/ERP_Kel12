@@ -76,6 +76,7 @@
                            <a href="{{ url('/Inventaris') }}"><button type="button" class="btn btn-success">Edit Stock <i class="fas fa-plus"></i></button></a>
                            <a href="{{ route('product.edit', $p->id) }}"><button type="button" class="btn btn-secondary">Edit <i class="fas fa-pen"></i></button></a>
                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#disablebackdrop_{{ $p->id }}"> Hapus <i class="fa-solid fa-trash"></i></button>
+                           
                            <div class="modal fade" id="disablebackdrop_{{ $p->id }}" tabindex="-1" data-bs-backdrop="false">
                               <div class="modal-dialog">
                                  <div class="modal-content">

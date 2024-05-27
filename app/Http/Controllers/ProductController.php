@@ -123,6 +123,8 @@ class ProductController extends Controller
         return redirect('/tabel');
 
     }
+
+    
     public function destroy($id)
 {
     // First delete related rows in the logs table

@@ -14,7 +14,8 @@
 </div><!-- End Page Title -->
 
 <section class="section">
-  <div class="row">
+<div class="row">
+
   <div class="col-lg-4" >
     <a href="{{url('/create')}}" class="card-link">
         <div class="alert alert-success alert-dismissible fade show">
@@ -32,11 +33,24 @@
             <div class="card-body">
                 <h5 class="card-title">Ubah Tampilan Dalam Bentuk Tabel</h5>
                 <p>Anda Akan Mengubah Bentuk Tabel</p>
+                <br>
             </div>
         </div>
     </a>
-</div>
   </div>
+
+<div class="col-lg-4 " >
+    <a href="{{url('/tabel')}}" class="card-link">
+        <div class="alert alert-info alert-dismissible fade show">
+            <div class="card-body">
+                <h5 class="card-title">Pesan Barang Dari Supplier</h5>
+                <p>Anda Akan Memesan Barang Dari Supplier</p>
+                <br>
+            </div>
+        </div>
+    </a>
+  </div>
+</div>
 
 
 </section>

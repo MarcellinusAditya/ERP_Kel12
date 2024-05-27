@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -35,6 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/myprofile', [UserController::class, 'myprofile'])->name('myprofile');
     Route::patch('/user/myprofile/{id}', [UserController::class, 'update']);
     Route::patch('/user/myprofile/password/{id}', [UserController::class, 'updatepassword']);
+
+    Route::get('/supplier', [SupplierController::class, 'index'])->name('supplier');
+    Route::get('/supplier/tambah', [SupplierController::class, 'create'])->name('supplier.create');
+    Route::post('/supplier/store', [SupplierController::class, 'store'])->name('supplier.store');
+    Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
+    Route::put('/supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+    Route::get('/supplier/hapus/{id}', [SupplierController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';

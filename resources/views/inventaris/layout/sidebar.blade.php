@@ -23,8 +23,15 @@
           <i class="bx bx-user"></i>
           <span>User</span>
         </a>
-        
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{route('supplier')}}">
+          <i class="bx ri-building-4-line"></i>
+          <span>Supplier</span>
+        </a>
+      </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->
