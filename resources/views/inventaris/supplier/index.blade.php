@@ -45,13 +45,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php
+                                function formatPhoneNumber($number)
+                                {
+                                    // Cek apakah karakter pertama adalah '0'
+                                    if (strpos($number, '0') === 0) {
+                                        // Ganti '0' dengan '62' dan kembalikan sisa string
+                                        return '62' . substr($number, 1);
+                                    }
+                                    // Jika tidak dimulai dengan '0', kembalikan nomor aslinya
+                                    return $number;
+                                }
+                            @endphp
+
                             @foreach ($supplier as $s)
                                 <tr>
                                     <td>{{ $s->id }}</td>
                                     <td>{{ $s->name }}</td>
                                     <td>{{ $s->alamat }}</td>
                                     <td>{{ $s->email }}</td>
-                                    <td>{{ $s->no_telepon }}</td>
+                                    <td>
+                                        {{ $s->no_telepon }}
+                                        <a href="https://wa.me/{{ formatPhoneNumber($s->no_telepon) }}" class="btn btn-success" target="blank">Chat via WhatsApp</a>
+                                    </td>
                                     <td>
                                         <a href="{{ route('supplier.edit', $s->id) }}" class="btn btn-warning">Edit</a>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal_{{ $s->id }}">Hapus</button>

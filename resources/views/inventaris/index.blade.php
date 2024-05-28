@@ -40,7 +40,7 @@
   </div>
 
 <div class="col-lg-4 " >
-    <a href="{{url('/tabel')}}" class="card-link">
+    <a href="{{url('/supplier')}}" class="card-link">
         <div class="alert alert-info alert-dismissible fade show">
             <div class="card-body">
                 <h5 class="card-title">Pesan Barang Dari Supplier</h5>

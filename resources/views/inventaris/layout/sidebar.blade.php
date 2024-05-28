@@ -8,14 +8,20 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-        
       </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link " href="{{url('/tabel')}}">
+          <i class="bi bi-box"></i>
+          <span>Product</span>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link " href="{{ route('logs.index') }}">
           <i class="bi bi-file-earmark"></i>
           <span>Logs</span>
         </a>
-        
       </li>
 
       <li class="nav-item">
