@@ -36,6 +36,7 @@
                     <th>Status</th>
                     <th>Jumlah</th>
                     <th>Jumlah Akhir</th>
+                    <th>Supplier</th>
                     <th data-type="date" data-format="DD/MM/YYYY">Tanggal Input</th>
                     <th>Nota</th>
                     <th>Keterangan</th>
@@ -57,6 +58,7 @@
                    
                     <td>{{$log->stock}}</td>
                     <td>{{$log->final_stock}}</td>
+                    <th>{{$log->supplier->name ?? ''}}</th>
                     <td>{{$log->created_at}}</td>
                     <td>{{$log->nota}}</td>
                     <td>{{$log->description}}</td>

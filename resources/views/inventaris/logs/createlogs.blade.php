@@ -41,21 +41,21 @@
           </div>
 
             <div class="col-md-8">
-                <label for="status_stock" class="form-label">Status</label>
-                <div class="btn-group form-control" role="group" id="status_stock" aria-label="Basic radio toggle button group">
+                <label for="status_stock" class="form-label ">Status</label>
+                <div class="btn-group form-control " role="group" id="status_stock" aria-label="Basic radio toggle button group">
                     @if ($status =='Out')
-                    <input type="radio" class="btn-check " name="status" id="btnradio1" value="Out" autocomplete="off" checked>
+                    <input type="radio" class="btn-check"  onclick=statusCheck() name="status" id="btnradio1" value="Out" autocomplete="off" checked>
                     <label class="btn btn-outline-danger" for="btnradio1">Kurang</label>
                   
-                    <input type="radio" class="btn-check" name="status" id="btnradio2" value="In" autocomplete="off">
+                    <input type="radio" class="btn-check" onclick=statusCheck()  name="status" id="btnradio2" value="In" autocomplete="off">
                     <label class="btn btn-outline-success" for="btnradio2">Tambah</label>
                     @endif
 
                     @if ($status =='In')
-                    <input type="radio" class="btn-check " name="status" id="btnradio1" value="Out" autocomplete="off" >
+                    <input type="radio" class="btn-check " onclick=statusCheck() name="status" id="btnradio1" value="Out" autocomplete="off" >
                     <label class="btn btn-outline-danger" for="btnradio1">Kurang</label>
                   
-                    <input type="radio" class="btn-check" name="status" id="btnradio2" autocomplete="off" value="In" checked>
+                    <input type="radio" class="btn-check" onclick=statusCheck() name="status" id="btnradio2" autocomplete="off" value="In" checked>
                     <label class="btn btn-outline-success" for="btnradio2">Tambah</label>
                     @endif
                   
@@ -74,6 +74,22 @@
                 @enderror
             </div>
 
+            <div class="col-12" id="supplier-option" style="display: block">
+              <label for="supplier" class="form-label">Supplier</label>
+              <select id="supplier" class="form-select" name="supplier_id">
+                <option  selected="selected" hidden></option>  
+                @foreach ($suppliers as $supplier)
+                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
+                
+                @endforeach
+                  
+              </select>
+              @error('supplier')
+              <div class="invalid-feedback">
+                {{$message}}
+              </div>
+              @enderror
+          </div>
             
 
             <div class="col-12">
@@ -106,5 +122,6 @@
 
     </div>
 </div>
+
 
 @endsection

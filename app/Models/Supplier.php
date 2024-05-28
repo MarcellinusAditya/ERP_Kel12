@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 class Supplier extends Model
 {
     use HasFactory;
@@ -17,4 +17,10 @@ class Supplier extends Model
         'no_telepon',
         'email',
     ];
+
+    public function Logs():HasMany
+    {
+        return $this->hasMany(Log::class, "supplier_id");
+    }
+
 }
