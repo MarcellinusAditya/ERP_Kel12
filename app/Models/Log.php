@@ -30,4 +30,9 @@ class Log extends Model
     {
         return $this->belongsTo(User::class, "user_id");
     }
+
+    public function Supplier():BelongsTo
+    {
+        return $this->belongsTo(Supplier::class, "supplier_id");
+    }
 }

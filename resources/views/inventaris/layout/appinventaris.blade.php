@@ -90,5 +90,29 @@
 
 </body>
 @include('sweetalert::alert')
+<script>
+  var kurang = document.querySelector("#btnradio1");
+  var tambah = document.querySelector("#btnradio2");
+ 
+ var supplier = document.querySelector("#supplier-option");
+
+ if(kurang.checked == true){
+    supplier.style.display="none";
+  }
+  else if(tambah.checked == true){
+    supplier.style.display="block";
+  }
+
+ function statusCheck(){
+    if(kurang.checked == true){
+    supplier.style.display="none";
+  }
+  else if(tambah.checked == true){
+    supplier.style.display="block";
+  }
+ 
+ }
+
+ </script>
 
 </html>
